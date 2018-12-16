@@ -1,21 +1,9 @@
 let BaseController = require('./base');
 module.exports = class CategoriesController extends BaseController {
     async index() {
-        let { ctx } = this;
-        // 参数
-        let { pageNum = 1, pageSize = 5, keyword } = ctx.query;
-        pageNum = isNaN(pageNum) ? 1 : parseInt(pageNum);
-        pageSize = isNaN(pageSize) ? 5 : parseInt(pageSize);
-        let query = {};
-        // 关键字
-        if(keyword) {
-            query.name = new RegExp(keyword);
-        }
         try {
             // 分页查询
-            let items = await ctx.model.Category.find(query)
-                .skip((pageNum - 1)*pageSize)
-                .limit(pageSize);
+            let items = await this.getPager('Category',['name']);
             this.success({items});
         } catch (error) {
             this.error(error);
