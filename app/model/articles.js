@@ -1,7 +1,7 @@
 module.exports = app => {
     let mongoose = app.mongoose;
     let Schema = mongoose.Schema;
-    const ObjectId = Schema.Type.ObjectId;
+    const ObjectId = Schema.Types.ObjectId;
 
     let ArticleSchema = new Schema({
         // 标题

@@ -32,7 +32,7 @@ class UsersController extends BaseController {
     }  
   }
   // 退出
-  async singout() {
+  async signout() {
     let { ctx } = this;
     ctx.session.user = null;
     this.success('退出成功');

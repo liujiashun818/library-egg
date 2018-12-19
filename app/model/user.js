@@ -6,5 +6,5 @@ module.exports = app => {
         password: String,
         email: String
     })
-    return mongoose.modal('User',UserSchema);
+    return mongoose.model('User',UserSchema);
 }

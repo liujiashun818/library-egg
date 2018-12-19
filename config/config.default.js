@@ -15,9 +15,7 @@ module.exports = appInfo => {
     // 1,启动mongdb 数据库/随便找个目录新建个文件夹/data，命令行进入此路径，执行‘mongod --dbpath=./data’回车
     // 2,连接数据, node 中连接数据库用 ‘egg-mongoose’ ; 按装-配置-启用
     // 客户端的连接地址
-    client: {
-      url: 'mongodb:127.0.0.1/201812blog' // 数据的名字 1，
-    }
+    url: 'mongodb://127.0.0.1/local' 
   }
   // 暂时先关闭，安全，上线需要解决
   config.security = {
