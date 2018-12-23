@@ -13,9 +13,20 @@ class BaseController extends Controller {
         // 有一个条件满足就好
         query['$or'] = fields.map(field => ({[field]: new RegExp(keyword)})); 
       }
-    return await ctx.model[modName].find(query)
+    let total = await ctx.model[modName].count(query);
+
+    let items = await ctx.model[modName].find(query)
       .skip((pageNum-1)*pageSize)
       .limit(pageSize);
+
+      this.success({
+        pageNum,
+        pageSize,
+        items,
+        total,
+        pageCount: Math.ceil(total/pageSize)
+      })
+
 
   }
   get user(){

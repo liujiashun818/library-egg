@@ -11,17 +11,19 @@ module.exports = class CategoriesController extends BaseController {
     }
     // 增加文章分类
     async create() {
-        let {ctx} = this;
+        let { ctx } = this;
         let category = ctx.request.body;
+        console.log('ctx.model.Category', ctx.model);
         try {
-            doc = await ctx.model.Category.findOne(category);
+            let doc = await ctx.model.Category.findOne(category);
+      
             if(doc) {
                 this.error('此分类已经存在了');
             } else {
                 doc = await ctx.model.Category.create(category);
                 this.success('保存分类成功');
+                // this.success({doc});
             }
-            ctx.model.Category.create();
 
         } catch (error) {
             this.error(error);

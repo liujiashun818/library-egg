@@ -18,7 +18,7 @@ class UsersController extends BaseController {
     let { ctx } = this;
     let user = ctx.request.body;
     try {
-      user = ctx.model.User.findOne(user);
+      user = await ctx.model.User.findOne(user);
       if(user) {
         ctx.session.user = user; // 存到本地缓存， 通过判断ctx.session.user是否为null判断是否登陆
         // todo 记得不要不密码返回，应该过滤下
