@@ -2,8 +2,8 @@ let BaseController = require('./base');
 module.exports = class CategoriesController extends BaseController {
     async index() {
         try {
-            // 分页查询
-            let items = await this.getPager('Category',['name']);
+            // todo 待封装 有bug
+            let items = await this.getPager({ modName: 'Category', returnFields: ['name'] })
             this.success({items});
         } catch (error) {
             this.error(error);
@@ -13,7 +13,6 @@ module.exports = class CategoriesController extends BaseController {
     async create() {
         let { ctx } = this;
         let category = ctx.request.body;
-        console.log('ctx.model.Category', ctx.model);
         try {
             let doc = await ctx.model.Category.findOne(category);
       

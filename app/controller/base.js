@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 
 class BaseController extends Controller {
-  async getPager (modName, fields=[]) {
+  async getPager (modName, fields=[], populateFields = []) {
     const { ctx } = this;
     let { pageNum = 1 ,pageSize = 5, keyword = ''} = ctx.query;
     pageNum = isNaN(pageNum) ? 1 : parseInt(pageNum);
@@ -27,7 +27,26 @@ class BaseController extends Controller {
         pageCount: Math.ceil(total/pageSize)
       })
 
-
+      const { ctx } = this;
+      let { pageNum = 1, pageSize = 5, keyword = '' } = ctx.query;
+      pageNum = isNaN(pageNum) ? 1 : parseInt(pageNum);
+      pageSize = isNaN(pageSize) ? 5 : parseInt(pageSize);
+      let query = {};
+      if (keyword && fields.length > 0) {
+          query['$or'] = fields.map(field => ({ [field]: new RegExp(keyword) }));
+      }
+      let total = await ctx.model[modName].count(query);
+      let cursor = ctx.model[modName].find(query).sort({ _id: -1 }).skip((pageNum - 1) * pageSize).limit(pageSize);
+      populateFields.forEach(field => {
+          cursor = cursor.populate(field);
+      });
+      let items = await cursor;
+      this.success({
+          pageNum,
+          pageSize,
+          items,
+          total
+      });
   }
   get user(){
     return this.ctx.session.user;
