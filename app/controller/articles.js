@@ -48,9 +48,10 @@ module.exports = class ArticlesController extends BaseController {
     }
 
     async addPv() {
-        // todo 有bug
         const { ctx } = this;
         let id = ctx.params.id;
+        console.log('id',id);
+        
         try {
             await ctx.model.Article.findByIdAndUpdate(id, { $inc: { pv: 1 } });
             this.success('修改PV成功');
@@ -59,6 +60,18 @@ module.exports = class ArticlesController extends BaseController {
         }
     }
 
+    async addComment() {
+        const { ctx } = this;
+        let id = ctx.params.id;
+        let comment = ctx.request.body;
+        comment.user = this.user;
+        try {
+            await ctx.model.Article.findByIdAndUpdate(id, { $push: { comments: comment } });
+            this.success('评论成功');
+        } catch (error) {
+            this.error(error);
+        }
+    }
     async addComment() {
         const { ctx } = this;
         let id = ctx.params.id;

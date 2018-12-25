@@ -16,6 +16,6 @@ module.exports = app => {
         ],
         createAt: { type: Date, default: Date.now }//创建时间，默认为当前时间
     });
-    const Articles = mongoose.model('Articles', ArticleSchema);
+    const Articles = mongoose.model('Article', ArticleSchema);
     return Articles;
 }

@@ -18,7 +18,8 @@ module.exports = app => {
   // router.delete('/api/categories/:id',controller.categories.destroy);
   // 文章的
   router.resources('articles', '/api/articles', controller.articles);
-  router.get('api/articles/pv/:id', controller.articles.addPv);
-  router.post('api/articles/comment/:id', controller.articles.addComment);
+  router.get('/api/articles/pv/:id', controller.articles.addPv);
+  router.post('/api/articles/comment/:id', controller.articles.addComment);
+  router.delete('/api/articles/:article_id/comment/:comment_id', controller.articles.removeComment);
 
 };
