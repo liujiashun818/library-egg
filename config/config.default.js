@@ -19,7 +19,11 @@ module.exports = appInfo => {
   }
   // 暂时先关闭，安全，上线需要解决
   config.security = {
-    csrf: false // 记得打开时 带上cookie？csfToken
+    csrf: false, // 记得打开时 带上cookie？csfToken
+    domainWhiteList: ['http://localhost:3000']
+  }
+  config.cors = {
+    credentials: true
   }
   return config;
 };
