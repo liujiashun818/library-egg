@@ -7,3 +7,8 @@ exports.mongoose = {
     enable: true,
     package: 'egg-mongoose'
 }
+exports.cors = {
+    enabled: true,
+    package: 'egg-cors',
+    // 跨域用的
+}
