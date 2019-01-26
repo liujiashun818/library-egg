@@ -4,7 +4,8 @@ module.exports = app => {
     let UserSchema = new Schema({
         username: String,
         password: String,
-        email: String
+        email: String,
+        phone: String,
     })
     return mongoose.model('User',UserSchema);
 }
