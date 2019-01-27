@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.security = {
     csrf: false, // 记得打开时 带上cookie？csfToken
     // domainWhiteList: ['http://localhost:3000']
-    domainWhiteList: ['http://39.107.73.145:3000']
+    domainWhiteList: ['http://localhost:80']
   }
   config.cors = {
     credentials: true
@@ -30,8 +30,8 @@ module.exports = appInfo => {
 //   config.cluster = {
 //     listen: {
 //       path: '',
-//       port: 7001,
-//       hostname: '39.107.73.145',
+//       port: 7002,
+//       // hostname: '39.107.73.145',
 //     }
 // }
   return config;
