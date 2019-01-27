@@ -27,12 +27,12 @@ module.exports = appInfo => {
   config.cors = {
     credentials: true
   }
-//   config.cluster = {
-//     listen: {
-//       path: '',
-//       port: 7002,
-//       // hostname: '39.107.73.145',
-//     }
-// }
+  config.cluster = {
+    listen: {
+      path: '',
+      // port: 7002,
+      hostname: '0.0.0.0',
+    }
+}
   return config;
 };
