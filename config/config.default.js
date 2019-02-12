@@ -22,9 +22,12 @@ module.exports = appInfo => {
   config.security = {
     csrf: false, // 记得打开时 带上cookie？csfToken
     // domainWhiteList: ['http://localhost:3000']
-    domainWhiteList: ['http://localhost:80']
+    // 上线时候换成服务器IP
+    // domainWhiteList: ['http://localhost:80'] // 本地
+    domainWhiteList: ['http://39.107.73.145'] // 线上
   }
   config.cors = {
+    origin: 'http://39.107.73.145', // 部署线上的时候加的，不知道干嘛的 跨域用的？
     credentials: true
   }
   config.cluster = {
