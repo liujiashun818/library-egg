@@ -24,10 +24,10 @@ module.exports = appInfo => {
     // domainWhiteList: ['http://localhost:3000']
     // 上线时候换成服务器IP
     // domainWhiteList: ['http://localhost:80'] // 本地
-    domainWhiteList: ['http://39.107.73.145'] // 线上
+    domainWhiteList: ['http://39.107.73.145:7001'] // 线上
   }
   config.cors = {
-    origin: 'http://39.107.73.145', // 部署线上的时候加的，不知道干嘛的 跨域用的？
+    origin: 'http://39.107.73.145:7001', // 部署线上的时候加的，不知道干嘛的 跨域用的？
     credentials: true
   }
   config.cluster = {
