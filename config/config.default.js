@@ -27,6 +27,9 @@ module.exports = appInfo => {
     domainWhiteList: ['http://39.107.73.145'] // 线上
   }
   config.cors = {
+    credentials: true,
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+    allowHeaders: ['Content-Type', 'X-Access-Token', 'Accept', 'x-csrf-token'],
     origin: 'http://39.107.73.145', // 部署线上的时候加的，不知道干嘛的 跨域用的？
     credentials: true
   }
