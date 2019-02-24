@@ -27,15 +27,17 @@ module.exports = class BaseController extends Controller {
         });
     }
 
-    success(data) {
+    success(data,msg) {
         this.ctx.body = {
             code: 0,
+            msg,
             data
         }
     }
     error(error) {
         this.ctx.body = {
             code: 1,
+            msg:'',
             error: error.toString()
         }
     }

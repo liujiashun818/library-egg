@@ -7,9 +7,12 @@ class UsersController extends BaseController {
     let { ctx } = this;
     let user = ctx.request.body;
     try {
-      // 保存数据库
+      // 保存数据库 // 注册
        user = await ctx.model.User.create(user);
-       this.success({user});
+       const obj = {
+         username：user.username
+       }
+       this.success(obj,{msg:'注册成功'});
     } catch (error) {
       this.error(error)
     }
@@ -23,7 +26,11 @@ class UsersController extends BaseController {
         ctx.session.user = user; // 存到本地缓存， 通过判断ctx.session.user是否为null判断是否登陆
         // todo 记得不要不密码返回，应该过滤下
         // 登陆成功会返回 set-cookie
-        this.success({user})
+        const obj = {
+          username : user.username,
+          _id : user._id,
+        }
+        this.success(obj)
       }else{
         this.error('用户名或者密码错误')
       }

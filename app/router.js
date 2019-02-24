@@ -6,8 +6,8 @@
 module.exports = app => {
   const { router, controller } = app;
   // router.get('/', controller.home.index);
-  router.post('/api/users/signup', controller.users.signup);
-  router.post('/api/users/signin', controller.users.signin);
+  router.post('/api/users/signup', controller.users.signup); //注册
+  router.post('/api/users/signin', controller.users.signin); // 登陆
   router.get('/api/users/signout', controller.users.signout);
  // 增删改查
  router.resources('categories', '/api/categories', controller.categories);
