@@ -31,7 +31,7 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     allowHeaders: ['Content-Type', 'X-Access-Token', 'Accept', 'x-csrf-token'],
     // origin: 'http://39.107.73.145', // 部署线上的时候加的，不知道干嘛的 跨域用的？
-    origin: '*', // 部署线上的时候加的，不知道干嘛的 跨域用的？
+    origin: ['http://39.107.73.145', 'http://localhost:3000'], // 部署线上的时候加的，不知道干嘛的 跨域用的？
     credentials: true
   }
   config.cluster = {
