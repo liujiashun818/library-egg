@@ -27,10 +27,9 @@ module.exports = class BaseController extends Controller {
         });
     }
 
-    success(data,msg) {
+    success(data) {
         this.ctx.body = {
             code: 0,
-            msg,
             data
         }
     }

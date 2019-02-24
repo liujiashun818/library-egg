@@ -10,9 +10,10 @@ class UsersController extends BaseController {
       // 保存数据库 // 注册
        user = await ctx.model.User.create(user);
        const obj = {
-         username: user.username
+         username: user.username,
+         msg:'ok'
        }
-       this.success(obj,{msg:'注册成功'});
+       this.success(obj);
     } catch (error) {
       this.error(error)
     }
