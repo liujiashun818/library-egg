@@ -24,14 +24,14 @@ module.exports = appInfo => {
     // domainWhiteList: ['http://localhost:3000']
     // 上线时候换成服务器IP
     // domainWhiteList: ['http://localhost:80'] // 本地
-    domainWhiteList: ['http://39.107.73.145'] // 线上
+    domainWhiteList: ['http://39.107.73.145','http://172.20.85.216'] // 线上 172.20.85.216:本地开发IP
   }
   config.cors = {
     credentials: true,
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     allowHeaders: ['Content-Type', 'X-Access-Token', 'Accept', 'x-csrf-token'],
     // origin: 'http://39.107.73.145', // 部署线上的时候加的，不知道干嘛的 跨域用的？
-    origin: '*', // 部署线上的时候加的，不知道干嘛的 跨域用的？
+    origin: 'http://172.20.85.216', // 部署线上的时候加的，不知道干嘛的 跨域用的？
     credentials: true
   }
   config.cluster = {
