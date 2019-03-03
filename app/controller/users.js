@@ -11,7 +11,7 @@ class UsersController extends BaseController {
        user = await ctx.model.User.create(user);
        const obj = {
          username: user.username,
-         msg:'ok'
+         msg:'注册ok'
        }
        this.success(obj);
     } catch (error) {

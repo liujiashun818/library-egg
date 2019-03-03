@@ -46,6 +46,19 @@ module.exports = class ArticlesController extends BaseController {
             this.error(error);
         }
     }
+    //detail todo
+    async detail() {
+        const { ctx } = this;
+        let id = ctx.params.id;
+        let { ids = [] } = ctx.request.body;
+        ids.push(id);
+        try {
+            await ctx.model.Article.findById({ _id: { $in: ids } });
+            this.success('请求详情文章');
+        } catch (error) {
+            this.error(error);
+        }
+    }
 
     async addPv() {
         const { ctx } = this;

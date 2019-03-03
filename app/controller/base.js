@@ -15,6 +15,7 @@ module.exports = class BaseController extends Controller {
         }
         let total = await ctx.model[modName].count(query);
         let cursor = ctx.model[modName].find(query).sort({ _id: -1 }).skip((pageNum - 1) * pageSize).limit(pageSize);
+
         populateFields.forEach(field => {
             cursor = cursor.populate(field);
         });
