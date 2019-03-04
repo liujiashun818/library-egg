@@ -54,10 +54,8 @@ module.exports = class ArticlesController extends BaseController {
         // let { ids = [] } = ctx.request.body;
         // ids.push(id);
         try {
-            await ctx.model.Article.findById(id,(err,doc)=>{
-                console.log('doc',doc)
-            });
-            this.success('请求详情文章');
+            let data = await ctx.model.Article.findById(id);
+            this.success(data);
         } catch (error) {
             this.error(error);
         }
