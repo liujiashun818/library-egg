@@ -46,13 +46,9 @@ module.exports = class ArticlesController extends BaseController {
             this.error(error);
         }
     }
-    //detail todo
     async detail() {
         const { ctx } = this;
         let id = ctx.params.id;
-        console.log('ctx', ctx);
-        // let { ids = [] } = ctx.request.body;
-        // ids.push(id);
         try {
             let data = await ctx.model.Article.findById(id);
             this.success(data);
