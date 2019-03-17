@@ -21,17 +21,17 @@ module.exports = appInfo => {
   // 暂时先关闭，安全，上线需要解决
   config.security = {
     csrf: false, // 记得打开时 带上cookie？csfToken
-    // domainWhiteList: ['http://localhost:3000']
+    domainWhiteList: ['http://localhost:3000']
     // 上线时候换成服务器IP
     // domainWhiteList: ['http://localhost:80'] // 服务器本地
-    domainWhiteList: ['http://39.107.73.145','http://localhost:3000'] // 线上 172.20.85.216:本地开发IP
+    // domainWhiteList: ['http://39.107.73.145','http://localhost:3000'] // 线上 172.20.85.216:本地开发IP
   }
   config.cors = {
     credentials: true,
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     allowHeaders: ['Content-Type', 'X-Access-Token', 'Accept', 'x-csrf-token'],
-    origin: 'http://39.107.73.145', // 正式环境
-    // origin: 'http://localhost:3000', // 本地
+    // origin: 'http://39.107.73.145', // 正式环境
+    origin: 'http://localhost:3000', // 本地
     credentials: true
   }
   config.cluster = {
