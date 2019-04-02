@@ -19,8 +19,8 @@ module.exports = app => {
   // 文章的
   router.resources('articles', '/api/articles', controller.articles);
   router.get('/api/articles/pv/:id', controller.articles.addPv);
-  router.get('/api/articles/detail/:id', controller.articles.detail); // 获取详情
-  router.post('/api/articles/comment/:id', controller.articles.addComment);
+  // router.get('/api/articles/detail/:id', controller.articles.detail); // 获取详情
+  // router.post('/api/articles/comment/:id', controller.articles.addComment);
   router.delete('/api/articles/:article_id/comment/:comment_id', controller.articles.removeComment);
 
 };
